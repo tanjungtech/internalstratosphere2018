@@ -21,7 +21,11 @@ get_header(); ?>
 			while ( have_posts() ) : the_post();
 
 				// Include the page content template.
-				get_template_part( 'template-parts/content', 'page' );
+        if($post->post_parent == get_page_by_title( 'Service' )->ID){
+  				get_template_part( 'template-parts/content', 'service' );
+        }else{
+          get_template_part( 'template-parts/content', 'page' );
+        }
 
 				// If comments are open or we have at least one comment, load up the comment template.
 				if ( comments_open() || get_comments_number() ) {
