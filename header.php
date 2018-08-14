@@ -13,6 +13,7 @@
 <html <?php language_attributes(); ?> class="no-js">
 <head>
   <title><?php bloginfo('name'); wp_title();?></title>
+  <meta name="description" content="<?php bloginfo('description');?>">
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
