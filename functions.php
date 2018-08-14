@@ -24,7 +24,8 @@
  * @subpackage Twenty_Sixteen
  * @since Twenty Sixteen 1.0
  */
-
+  
+require get_template_directory() . '/inc/cleanup.php';
 /**
  * Twenty Sixteen only works in WordPress 4.4 or later.
  */
@@ -312,6 +313,9 @@ function twentysixteen_scripts() {
 		'expand'   => __( 'expand child menu', 'twentysixteen' ),
 		'collapse' => __( 'collapse child menu', 'twentysixteen' ),
 	) );
+
+  // SASS stylesheet.
+  wp_enqueue_style( 'instrat-style', get_template_directory_uri() . '/css/instrat.css');
 }
 add_action( 'wp_enqueue_scripts', 'twentysixteen_scripts' );
 
