@@ -14,7 +14,10 @@
 get_header(); 
 if($post->post_parent == get_page_by_title( 'Service' )->ID){
           get_template_part( 'template-parts/content', 'service' );
-        } else{
+        } else if($post->post_parent == get_page_by_title('Portofolio')->ID){
+          get_template_part( 'template-parts/content', 'portofolio' );
+        } else
+{
 ?>
 
 <div id="primary" class="content-area pagecontainer">
