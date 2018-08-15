@@ -33,23 +33,25 @@ $thumb = wp_get_attachment_image_src( get_post_thumbnail_id($id), 'full' );
           <?php if ( $serv_query->have_posts() ) : ?>
             <div class="related">
               <h3>Related Portofolio</h3>
-            <?php while ( $serv_query->have_posts() ) : $serv_query->the_post(); ?>
-              <div class="related-card">
-                <?php $thumb = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_ID()), 'full' );?>
-                <figure class="image-masking">
-                  <img src="<?php echo $thumb[0];?>" alt="<?php the_title(); ?>"/>
-                </figure>
-                <div class="related-card-container">
-                  <div class="inner">
-                    <h5 class="related-title"><a href="<?php echo esc_url(get_permalink(get_the_id()));?>" title="<?php _e(get_the_title(get_the_id()));?>"><?php the_title(); ?></a></h5>
-                    <p><?php the_excerpt();?></p>
-                    <a class="btn-learn-more" href="<?php echo esc_url(get_permalink(get_the_id()));?>" title="<?php _e(get_the_title(get_the_id()));?>">LEARN MORE ></a>
+              <div class="related-container">
+              <?php while ( $serv_query->have_posts() ) : $serv_query->the_post(); ?>
+                <div class="related-card">
+                  <?php $thumb = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_ID()), 'full' );?>
+                  <figure class="image-masking">
+                    <img src="<?php echo $thumb[0];?>" alt="<?php the_title(); ?>"/>
+                  </figure>
+                  <div class="related-card-container">
+                      <h5 class="related-title"><a href="<?php echo esc_url(get_permalink(get_the_id()));?>" title="<?php _e(get_the_title(get_the_id()));?>"><?php the_title(); ?></a></h5>
+                      <div class="inner">
+                        <p><?php the_excerpt();?></p>
+                      </div>
+                      <a class="btn-learn-more" href="<?php echo esc_url(get_permalink(get_the_id()));?>" title="<?php _e(get_the_title(get_the_id()));?>">LEARN MORE ></a>
                   </div>
                 </div>
-              </div>
             <?php endwhile; ?>
             <?php wp_reset_postdata(); ?>
-            </div>
+              </div>
+            </div>  
           <?php else : ?>
           <?php endif; ?>
       </div>
