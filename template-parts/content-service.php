@@ -26,9 +26,33 @@ $thumb = wp_get_attachment_image_src( get_post_thumbnail_id($id), 'full' );
       <div class="container-content">
         <div class="content">
           <?php echo $content;?>
-          <div class="related">
-            <h3>Related Portofolio</h3>
-          </div>
+          <?php $parent_services = get_page_by_title( 'Service' );
+            $serv_args = array( 'post_type' => 'page', 'post_parent' => $parent_services->ID, 'posts_per_page' => 3, 'orderby' => 'menu_order', 'order' => 'ASC', 'post__not_in' => array($id));
+            // the query
+            $serv_query = new WP_Query( $serv_args ); 
+          ?>
+          <?php if ( $serv_query->have_posts() ) : ?>
+            <div class="related">
+              <h3>Related Service</h3>
+            <?php while ( $serv_query->have_posts() ) : $serv_query->the_post(); ?>
+              <div class="related-card">
+                <?php $thumb = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_ID()), 'full' );?>
+                <figure class="image-masking">
+                  <img src="<?php echo $thumb[0];?>" alt="<?php the_title(); ?>"/>
+                </figure>
+                <div class="related-card-container">
+                  <div class="inner">
+                    <h5 class="related-title"><a href="<?php echo esc_url(get_permalink(get_the_id()));?>" title="<?php _e(get_the_title(get_the_id()));?>"><?php the_title(); ?></a></h5>
+                    <p><?php the_excerpt();?></p>
+                    <a class="btn-learn-more" href="<?php echo esc_url(get_permalink(get_the_id()));?>" title="<?php _e(get_the_title(get_the_id()));?>">LEARN MORE ></a>
+                  </div>
+                </div>
+              </div>
+            <?php endwhile; ?>
+            <?php wp_reset_postdata(); ?>
+            </div>
+          <?php else : ?>
+          <?php endif; ?>
         </div>
         <aside class="sidebar">
           <?php get_sidebar();?>
