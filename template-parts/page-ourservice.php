@@ -42,7 +42,7 @@ $thumb = wp_get_attachment_image_src( get_post_thumbnail_id($id), 'full' );
           ?>
           <div class="cell">
             <img class="container-pict" alt="<?php echo $page->post_title;?>" src="<?php echo $image[0]; ?>"/>
-            <div class="doc-icon"><i class="far fa-file-alt"></i></div>
+            <div class="doc-icon"><i class="material-icons">sync</i></div>
             <h2><a href="<?php echo get_page_link( $page->ID ); ?>"><?php echo $page->post_title; ?></a></h2>
             <div class="entry"><?php echo $content; ?></div>
             <div class="learn-more"><a href="<?php echo esc_url(get_permalink($page->ID));?>" title="<?php _e(get_the_title($page->ID));?>">LEARN MORE></a></div>
